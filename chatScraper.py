@@ -1,4 +1,5 @@
 import dryscrape
+import time
 from collections import Counter
 from bs4 import BeautifulSoup
 from HTMLParser import HTMLParser
@@ -19,9 +20,19 @@ def strip_tags(html):
     s.feed(html)
     return s.get_data()
 
+
+
 session = dryscrape.Session()
+print "establishing connection..."
 session.visit("https://poloniex.com/exchange")
+
+stayAndWait = 20#how long to stay on the site...the longer, the more messages
+for i in range(1,stayAndWait):
+	print str(i)+"/"+str(stayAndWait)+" seconds passed"
+	time.sleep(1)
+
 response = session.body()
+
 soup = BeautifulSoup(response, "lxml")
 result = soup.find(id="trollbox") #trollboxtable messages
 
@@ -33,7 +44,7 @@ messages = messages.split()
 wordAndCtr = Counter(messages).most_common() #we get words and counter, occurencies of the word
 #we get a list of tuples, ("word", times)
 #must eliminate worthless words like "the", "and", ...
-worthlessWords = ['the', 'i', 'and', 'is']
+worthlessWords = ['will','or','that','for','the', 'i', 'and', 'is', 'in', 'on', 'you', 'a', 'your', 'it', 'this', 'my', 'to']
 
 #is the word worthless....if it is, the functon will return True, else False
 def isTheWordWorthless(word, worthlessWords):
