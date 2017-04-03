@@ -1,6 +1,24 @@
-2017-04-03T11:20:26+0200 session joined
-2017-04-03T11:20:26+0200 subscribed
-2017-04-03T11:20:27+0200 Will LTC survive this sell wall?
-2017-04-03T11:20:29+0200 pauldack, Support are extremely busy at the moment , have you checked  https://poloniex.com/profile for messages?
-2017-04-03T11:20:32+0200 Received SIGINT, shutting down.
-2017-04-03T11:20:32+0200 Main loop terminated.
+2017-04-03T19:54:49+0200 session joined
+2017-04-03T19:54:49+0200 subscribed
+2017-04-03T19:54:54+0200 ban
+2017-04-03T19:54:54+0200 Please,
+2017-04-03T19:54:57+0200 cilibiu.cristian,
+2017-04-03T19:54:58+0200 weird
+2017-04-03T19:55:00+0200 god
+2017-04-03T19:55:00+0200 sell
+2017-04-03T19:55:02+0200 Received SIGINT, shutting down.
+2017-04-03T19:55:02+0200 While firing <function gotMessage at 0x7efc55cbcde8> subscribed under 8180473660845824.: Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/autobahn/twisted/websocket.py", line 162, in _onMessage
+    self.onMessage(payload, isBinary)
+  File "/usr/local/lib/python2.7/dist-packages/autobahn/wamp/websocket.py", line 95, in onMessage
+    self._session.onMessage(msg)
+  File "/usr/local/lib/python2.7/dist-packages/autobahn/wamp/protocol.py", line 638, in onMessage
+    future = txaio.as_future(handler.fn, *invoke_args, **invoke_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/txaio/tx.py", line 408, in as_future
+    return maybeDeferred(fun, *args, **kwargs)
+--- <exception caught here> ---
+  File "/usr/lib/python2.7/dist-packages/twisted/internet/defer.py", line 150, in maybeDeferred
+    result = f(*args, **kw)
+exceptions.TypeError: gotMessage() takes exactly 5 arguments (4 given)
+
+2017-04-03T19:55:02+0200 Main loop terminated.
