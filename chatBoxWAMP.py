@@ -5,9 +5,6 @@ from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 
 
 
-
-
-
 class MyComponent(ApplicationSession):
 
     @inlineCallbacks
@@ -16,7 +13,7 @@ class MyComponent(ApplicationSession):
         
         def gotMessage(type, messageNumber, username, message, reputation):
         	print message
-
+        	
         # 1. subscribe to a topic so we receive events
         try:
         	yield self.subscribe(gotMessage,u'trollbox')

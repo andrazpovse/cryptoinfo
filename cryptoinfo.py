@@ -1,5 +1,11 @@
 import urllib, json
 from Tkinter import *
+from multiprocessing import Process
+import time, threading
+
+
+
+
 
 global data #global variable that contains recent data from API call in JSON format
 #when wanting to change data, use "global data" one line before the actual change
@@ -8,6 +14,8 @@ global listOfCoins #perhaps global will not be needed...just for now it is
 #name of coin or symbol works aswell
 listOfCoins = ['ICN', 'LBC', 'Steem']
 
+
+#main is currently omitted....focus not on graphics design currenty
 def main(): #run main loop GUI
 	root = Tk()
 	root.geometry("600x600")
@@ -19,13 +27,10 @@ def main(): #run main loop GUI
 	blackbutton.pack( side = BOTTOM)
 
 
-
-	
-
-	def getData():
-		getFirst100CoinsData() #changes global variable data
-		root.after(1000*60*5, getData)  # get new data every 5 minutes from now on
-	getData() #first API call happens right after the program launches
+	#def getData():
+	#	getFirst100CoinsData() #changes global variable data
+	#	root.after(1000*60*5, getData)  # get new data every 5 minutes from now on
+	#getData() #first API call happens right after the program launches
 
 	var = StringVar() #creates a label which will display coin info
 	label = Label( root, textvariable=var )
@@ -37,9 +42,8 @@ def main(): #run main loop GUI
 
 
 
-
 	root.mainloop()
-
+#end of main
 
 
 
@@ -74,19 +78,30 @@ def informationOnList(list):
 	return output
 
 
+def getData():
+		getFirst100CoinsData() 
+		print informationOnList(listOfCoins)
+		time.sleep(60*5)
+		getData()
+		#threading.Timer(60*5, getData).start() #calls itself every 5 minutes
+		
+getData() 
+
+#need to get coin names
+def getCoinNames(data):
+	out = ""
+	for i in range(0, len(data)):
+		out += "'"+data[i]['symbol']+"','"+data[i]['name']+"',"
+	print out
+#getFirst100CoinsData()
 
 
-
+#getCoinNames(data)
 
 
 
 
 #starts the main loop
-main()
-
-
-
-
 
 # TO DO
 """ 
